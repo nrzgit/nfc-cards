@@ -1,3 +1,7 @@
 {
-  "cleanUrls": true
+  "rewrites": [
+    { "source": "/1", "destination": "/nur_1.html" },
+    { "source": "/2", "destination": "/almat_2.html" },
+    { "source": "/3", "destination": "/adilet_3.html" }
+  ]
 }
