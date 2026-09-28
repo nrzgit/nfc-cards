@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#F8F9FA" />
+
+  <title>Заказать NFC-визитку — CASEL</title>
+  <meta name="description" content="Өзіңізге де осындай заманауи смарт NFC визиткаға тапсырыс беріңіз. 1-ак басу арқылы контакт алмасыңыз." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Осындай NFC визиткаға тапсырыс беру" />
+  <meta property="og:description" content="Заманауи электронды визиткалар. Тапсырыс беру үшін өтінім қалдырыңыз." />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💳</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-main: #F8F9FA;
+      --bg-card: #FFFFFF;
+      --text-primary: #0F0F11;
+      --text-secondary: #27272A;
+      --text-muted: #71717A;
+      --border-color: #E4E4E7;
+
+      --btn-primary-bg: #0F0F11;
+      --btn-primary-text: #FFFFFF;
+      --btn-secondary-bg: #F4F4F5;
+      --btn-secondary-text: #0F0F11;
+
+      --radius: 16px;
+      --tap-target-min: 48px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background: var(--bg-main);
+      color: var(--text-secondary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    main { width: 100%; max-width: 440px; margin: 0 auto; padding: 32px 16px 48px; }
+
+    header { text-align: center; margin-bottom: 24px; }
+    
+    .badge-top {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; margin-bottom: 16px;
+      border: 1px solid var(--border-color); border-radius: 999px;
+      font-size: 12px; font-weight: 700; color: var(--text-muted);
+      background: var(--bg-card);
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
+    header h1 { margin: 0 0 10px; font-size: 26px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.4px; line-height: 1.25; }
+    header p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--text-muted); }
+
+    .card-preview {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 24px 0;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .card-preview .icon-box {
+      width: 64px; height: 64px;
+      background: var(--btn-secondary-bg);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 28px;
+    }
+
+    .features-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+
+    .feature-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--bg-card);
+      padding: 14px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      text-align: left;
+    }
+
+    .feature-item .icon {
+      flex-shrink: 0; width: 24px; height: 24px;
+      color: var(--text-primary); margin-top: 2px;
+    }
+
+    .feature-item .title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px; }
+    .feature-item .desc { font-size: 12px; color: var(--text-muted); margin: 0; line-height: 1.4; }
+
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; min-height: var(--tap-target-min);
+      padding: 14px 16px; margin-bottom: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      background: var(--btn-secondary-bg);
+      color: var(--btn-secondary-text);
+      font-size: 15px; font-weight: 700;
+      text-decoration: none; cursor: pointer;
+      transition: background-color .1s ease, transform .1s ease;
+    }
+    .btn:active { transform: scale(0.98); }
+
+    .btn-primary { background: var(--btn-primary-bg); color: var(--btn-primary-text); border-color: var(--btn-primary-bg); }
+    .btn-whatsapp { background: #25D366; color: #FFFFFF; border-color: #25D366; }
+    .btn-telegram { background: #229ED9; color: #FFFFFF; border-color: #229ED9; }
+
+    footer { margin-top: 36px; text-align: center; border-top: 1px solid var(--border-color); padding-top: 20px; }
+    footer p { font-size: 12px; color: var(--text-muted); margin: 0; }
+  </style>
+</head>
+<body>
+
+<main>
+  <header>
+    <div class="badge-top">
+      <span>⚡ SMART CARD SERVICE</span>
+    </div>
+    <h1>Осындай NFC-визиткаға тапсырыс беріңіз</h1>
+    <p>Бұрыңғы қағаз визиткаларды ұмытыңыз. Контактілеріңізді 1-ақ секундта смартфонға сақтатыңыз.</p>
+  </header>
+
+  <div class="card-preview">
+    <div class="icon-box">💳</div>
+    <h3 style="margin: 0 0 8px; font-size: 18px; color: var(--text-primary);">Жеке онлайн визитка</h3>
+    <p style="margin: 0; font-size: 13px; color: var(--text-muted);">
+      Дизайн, әлеуметтік желілер, QR-код және телефонға сақтау батырмасы бір сілтемеде.
+    </p>
+  </div>
+
+  <div class="features-list">
+    <div class="feature-item">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8.5a8 8 0 0 1 0 7M10.5 5.5a13 13 0 0 1 0 13M15 3a18 18 0 0 1 0 18"/></svg>
+      <div>
+        <div class="title">NFC & QR технологиясы</div>
+        <p class="desc">Телефонға жақындатсаңыз немесе QR сканерлесеңіз, визиткаңыз бірден ашылады.</p>
+      </div>
+    </div>
+
+    <div class="feature-item">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>
+      <div>
+        <div class="title">1-басу арқылы сақтау</div>
+        <p class="desc">Клиенттер сіздің аты-жөніңізді, телефоныңыз бен соцсетьтеріңізді тікелей контакіге сақтай алады.</p>
+      </div>
+    </div>
+
+    <div class="feature-item">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+      <div>
+        <div class="title">Шексіз өзгерту мүмкіндігі</div>
+        <p class="desc">Телефон немесе инстаграм ауысса, жаңа визитка басып шығарудың керегі жоқ — тек сайттағы деректі жаңартасыз.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ТАПСЫРЫС БАТЫРМАЛАРЫ -->
+  <a id="btn-order-wa" href="#" target="_blank" class="btn btn-whatsapp">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Z"/></svg>
+    WhatsApp арқылы тапсырыс беру
+  </a>
+
+  <a id="btn-order-tg" href="#" target="_blank" class="btn btn-telegram">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.94 4.53 18.62 20.2c-.25 1.1-.9 1.38-1.83.86l-5.06-3.73-2.44 2.35c-.27.27-.5.5-1.02.5l.36-5.15 9.37-8.47c.41-.36-.09-.56-.63-.2L6.79 12.72 1.8 11.16c-1.08-.34-1.1-1.08.23-1.6L20.54 2.4c.9-.33 1.69.2 1.4 2.13Z"/></svg>
+    Telegram арқылы жазу
+  </a>
+
+  <footer>
+    <p>© CASEL — NFC Визиткалар қызметі</p>
+  </footer>
+</main>
+
+<script>
+  // Тапсырыс қабылдайтын телефон немесе юзернеймдерді осы жерге енгізіңіз:
+  const CONFIG = {
+    whatsappNumber: '77052228378', // Тек цифрлар
+    telegramUsername: 'sailaubek_nurzhigit', // Без @
+    orderMessage: 'Сәлеметсіз бе! Маған да NFC электронды визиткасы керек еді. Толығырақ ақпарат бересіз бе?'
+  };
+
+  const waLink = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(CONFIG.orderMessage)}`;
+  const tgLink = `https://t.me/${CONFIG.telegramUsername}`;
+
+  document.getElementById('btn-order-wa').href = waLink;
+  document.getElementById('btn-order-tg').href = tgLink;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#F8F9FA" />
+
+  <title>Нұржігіт Сайлаубек — Founder</title>
+  <meta name="description" content="Электронная визитка. Сохраните контакт в один клик." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Open Graph: красивый превью при отправке ссылки в мессенджерах -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Нұржігіт Сайлаубек — Founder, CASEL" />
+  <meta property="og:description" content="Электронная визитка. Сохраните контакт в один клик." />
+  <meta property="og:image" content="./avatar.jpg" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💳</text></svg>" />
+  <link rel="apple-touch-icon" href="./avatar.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* Colors */
+      --bg-main: #F8F9FA;
+      --bg-card: #FFFFFF;
+      --text-primary: #0F0F11;
+      --text-secondary: #27272A;
+      --text-muted: #71717A;
+      --border-color: #E4E4E7;
+
+      /* Interactive */
+      --btn-primary-bg: #0F0F11;
+      --btn-primary-text: #FFFFFF;
+      --btn-secondary-bg: #F4F4F5;
+      --btn-secondary-text: #0F0F11;
+
+      /* Mobile Spacing & Layout */
+      --radius: 12px;
+      --tap-target-min: 48px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background: var(--bg-main);
+      color: var(--text-secondary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    main { width: 100%; max-width: 420px; margin: 0 auto; padding: 32px 16px 48px; }
+
+    header { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 28px; }
+
+    .avatar-wrap { position: relative; width: 96px; height: 96px; margin-bottom: 18px; }
+    .avatar {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .avatar-fallback { font-size: 32px; font-weight: 700; color: var(--text-primary); }
+    .status-dot {
+      position: absolute; bottom: 0; right: 0;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--text-primary);
+      border: 3px solid var(--bg-main);
+    }
+
+    header h1 { margin: 0 0 4px; font-size: 28px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.3px; }
+    header .role { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
+
+    .city-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 12px; padding: 6px 14px;
+      border: 1px solid var(--border-color); border-radius: 999px;
+      font-size: 12px; font-weight: 600; color: var(--text-muted);
+    }
+    .city-badge svg { width: 13px; height: 13px; }
+
+    .bio { margin: 16px 0 0; font-size: 15px; line-height: 1.6; color: var(--text-secondary); max-width: 300px; }
+
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; min-height: var(--tap-target-min);
+      padding: 14px 16px; margin-bottom: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      background: var(--btn-secondary-bg);
+      color: var(--btn-secondary-text);
+      font-size: 15px; font-weight: 700;
+      text-decoration: none; cursor: pointer;
+      transition: background-color .1s ease, color .1s ease, border-color .1s ease;
+    }
+    .btn:active { background: var(--btn-primary-bg); color: var(--btn-primary-text); border-color: var(--btn-primary-bg); }
+
+    .btn-primary { background: var(--btn-primary-bg); color: var(--btn-primary-text); border-color: var(--btn-primary-bg); margin-top: 8px; }
+    .btn-primary:active { background: var(--text-secondary); border-color: var(--text-secondary); }
+
+    section { margin-top: 28px; }
+    .section-title { margin: 0 0 12px; padding: 0 2px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
+
+    .contact-row {
+      display: flex; align-items: center; gap: 14px;
+      width: 100%; padding: 14px; margin-bottom: 10px;
+      border: 1px solid var(--border-color); border-radius: var(--radius);
+      background: var(--bg-card);
+      text-decoration: none; color: inherit;
+      transition: background-color .1s ease;
+    }
+    .contact-row:active { background: var(--btn-primary-bg); }
+    .contact-row:active .icon { background: var(--btn-primary-text); }
+    .contact-row:active .label,
+    .contact-row:active .value,
+    .contact-row:active .arrow { color: var(--btn-primary-text); }
+    .contact-row .icon {
+      flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--btn-secondary-bg); color: var(--text-primary);
+      transition: background-color .1s ease;
+    }
+    .contact-row .meta { min-width: 0; flex: 1; text-align: left; }
+    .contact-row .label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); }
+    .contact-row .value { display: block; font-size: 15px; font-weight: 700; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .contact-row .arrow { flex-shrink: 0; color: var(--text-muted); }
+
+    .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .social-card {
+      display: flex; flex-direction: column; gap: 10px;
+      padding: 14px; border: 1px solid var(--border-color); border-radius: var(--radius);
+      background: var(--bg-card); text-decoration: none; color: inherit;
+      transition: background-color .1s ease;
+    }
+    .social-card:active { background: var(--btn-primary-bg); }
+    .social-card:active .icon { background: var(--btn-primary-text); }
+    .social-card:active .name,
+    .social-card:active .sub { color: var(--btn-primary-text); }
+    .social-card .icon { width: 38px; height: 38px; border-radius: 10px; background: var(--btn-secondary-bg); color: var(--text-primary); display: flex; align-items: center; justify-content: center; transition: background-color .1s ease; }
+    .social-card .name { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+    .social-card .sub { font-size: 12px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
+    .action-grid .btn { margin-bottom: 0; }
+
+    footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; }
+    footer .tag { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
+    footer p { margin: 6px 0 0; font-size: 12px; color: var(--text-muted); }
+
+    .toast {
+      position: fixed; left: 50%; bottom: 24px;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--btn-primary-bg); color: var(--btn-primary-text);
+      padding: 12px 20px; border-radius: 999px;
+      font-size: 14px; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(15, 15, 17, .5);
+      display: none; align-items: center; justify-content: center;
+      padding: 24px; z-index: 50;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal-card { width: 100%; max-width: 300px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 24px; text-align: center; }
+    .modal-card h3 { margin: 0; font-size: 16px; font-weight: 700; color: var(--text-primary); }
+    .modal-card .hint { margin: 6px 0 0; font-size: 12px; color: var(--text-muted); }
+    .qr-box { margin: 20px auto 0; width: fit-content; padding: 12px; border-radius: 12px; border: 1px solid var(--border-color); background: #fff; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<main>
+  <header>
+    <div class="avatar-wrap">
+      <div class="avatar">
+        <img
+          id="avatar"
+          src="./avatar.jpg"
+          alt="Фото профиля"
+          onerror="this.replaceWith(document.getElementById('avatar-fallback').content.cloneNode(true))"
+        />
+      </div>
+      <span class="status-dot" aria-hidden="true"></span>
+    </div>
+
+    <!-- Запасной аватар с инициалами, если фото не найдено -->
+    <template id="avatar-fallback">
+      <span class="avatar-fallback">НС</span>
+    </template>
+
+    <h1>Нұржігіт Сайлаубек</h1>
+    <p class="role">Founder, CASEL</p>
+
+    <div class="city-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span id="text-city">Костанай, Казахстан</span>
+    </div>
+
+    <p class="bio">Успешно провели бизнес-кейс турнир для школьников Казахстана! Растём и масштабируем проект дальше.Открыты к сотрудничеству.</p>
+  </header>
+
+  <!-- ===== ГЛАВНАЯ КНОПКА ===== -->
+  <button id="save-contact" type="button" class="btn btn-primary">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>
+    Сохранить контакт
+  </button>
+
+  <!-- ===== БЫСТРАЯ СВЯЗЬ ===== -->
+  <section aria-labelledby="contacts-title">
+    <h2 id="contacts-title" class="section-title">Связаться напрямую</h2>
+
+    <a id="link-phone" href="#" class="contact-row">
+      <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
+      <span class="meta">
+        <span class="label">Телефон</span>
+        <span id="text-phone" class="value">+7 700 000 00 00</span>
+      </span>
+      <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </a>
+
+    <a id="link-email" href="#" class="contact-row">
+      <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+      <span class="meta">
+        <span class="label">Email</span>
+        <span id="text-email" class="value">hello@example.com</span>
+      </span>
+      <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </a>
+  </section>
+
+  <!-- ===== СОЦСЕТИ И МЕССЕНДЖЕРЫ ===== -->
+  <section aria-labelledby="social-title">
+    <h2 id="social-title" class="section-title">Соцсети и мессенджеры</h2>
+    <div class="social-grid">
+      <a id="link-telegram" href="#" target="_blank" rel="noopener noreferrer" class="social-card">
+        <span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.94 4.53 18.62 20.2c-.25 1.1-.9 1.38-1.83.86l-5.06-3.73-2.44 2.35c-.27.27-.5.5-1.02.5l.36-5.15 9.37-8.47c.41-.36-.09-.56-.63-.2L6.79 12.72 1.8 11.16c-1.08-.34-1.1-1.08.23-1.6L20.54 2.4c.9-.33 1.69.2 1.4 2.13Z"/></svg></span>
+        <span>
+          <span class="name">Telegram</span><br>
+          <span id="text-telegram" class="sub">@username</span>
+        </span>
+      </a>
+
+      <a id="link-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="social-card">
+        <span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.19-.53.06-.25-.12-1.05-.38-1.99-1.23-.74-.65-1.23-1.46-1.38-1.71-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.84-.85 2.04s.87 2.37.99 2.53c.12.17 1.72 2.62 4.16 3.67.58.25 1.03.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg></span>
+        <span>
+          <span class="name">WhatsApp</span><br>
+          <span class="sub">Написать в чат</span>
+        </span>
+      </a>
+
+      <a id="link-linkedin" href="#" target="_blank" rel="noopener noreferrer" class="social-card">
+        <span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14Zm1.78 13.02H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg></span>
+        <span>
+          <span class="name">LinkedIn</span><br>
+          <span class="sub">Профиль</span>
+        </span>
+      </a>
+
+      <a id="link-instagram" href="#" target="_blank" rel="noopener noreferrer" class="social-card">
+        <span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+        <span>
+          <span class="name">Instagram</span><br>
+          <span id="text-instagram" class="sub">@username</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== ПОДЕЛИТЬСЯ / QR ===== -->
+  <div class="action-grid">
+    <button id="share-card" type="button" class="btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+      Поделиться
+    </button>
+    <button id="show-qr" type="button" class="btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14h1v1h-1zM14 20h1v1h-1zM17 17h1v1h-1zM20 20h1v1h-1z"/></svg>
+      Показать QR
+    </button>
+  </div>
+
+  <!-- ===== ФУТЕР ===== -->
+  <footer>
+    <div class="tag">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8.5a8 8 0 0 1 0 7M10.5 5.5a13 13 0 0 1 0 13M15 3a18 18 0 0 1 0 18"/></svg>
+      NFC Business Card
+    </div>
+    <p>© <span id="year">2026</span> Нұржігіт Сайлаубек</p>
+  </footer>
+</main>
+
+<!-- ===== TOAST ===== -->
+<div id="toast" class="toast">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+  <span id="toast-text">Готово</span>
+</div>
+
+<!-- ===== QR-МОДАЛКА ===== -->
+<div id="qr-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="qr-title">
+  <div class="modal-card">
+    <h3 id="qr-title">Отсканируйте визитку</h3>
+    <p class="hint">Если телефон не поддерживает NFC</p>
+    <div class="qr-box">
+      <canvas id="qr-canvas" width="220" height="220"></canvas>
+    </div>
+    <button id="qr-close" type="button" class="btn" style="margin-top: 20px; margin-bottom: 0;">Закрыть</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   Мини-энкодер QR-кодов (byte mode, ECC уровня M, версии 1–10).
+   Полностью автономный — без CDN и внешних зависимостей.
+   Сверен модуль-в-модуль с эталонной библиотекой `qrcode` (npm)
+   и дополнительно проверен сквозным декодированием через jsQR.
+   ============================================================ */
+const QR = (() => {
+  const EC_PER_BLOCK = [10, 16, 26, 18, 24, 16, 18, 22, 22, 26]; // версии 1..10, уровень M
+  const BLOCKS       = [ 1,  1,  1,  2,  2,  4,  4,  4,  5,  5];
+  const ALIGN = [[], [6,18], [6,22], [6,26], [6,30], [6,34], [6,22,38], [6,24,42], [6,26,46], [6,28,50]];
+
+  // --- поле Галуа GF(256) ---
+  const EXP = new Uint8Array(512), LOG = new Uint8Array(256);
+  for (let i = 0, x = 1; i < 255; i++) {
+    EXP[i] = x; LOG[x] = i;
+    x <<= 1; if (x & 0x100) x ^= 0x11D;
+  }
+  for (let i = 255; i < 512; i++) EXP[i] = EXP[i - 255];
+  const mul = (a, b) => (a && b) ? EXP[LOG[a] + LOG[b]] : 0;
+
+  function genPoly(n) {
+    let g = [1];
+    for (let i = 0; i < n; i++) {
+      const next = new Array(g.length + 1).fill(0);
+      for (let j = 0; j < g.length; j++) {
+        next[j]     ^= g[j];
+        next[j + 1] ^= mul(g[j], EXP[i]);
+      }
+      g = next;
+    }
+    return g;
+  }
+
+  function ecBytes(data, n) {
+    const g = genPoly(n), res = new Array(n).fill(0);
+    for (const byte of data) {
+      const factor = byte ^ res.shift();
+      res.push(0);
+      if (factor) for (let i = 0; i < n; i++) res[i] ^= mul(g[i + 1], factor);
+    }
+    return res;
+  }
+
+  // --- каркас: -1 свободно, 2 зарезервировано под служебные данные ---
+  function skeleton(v) {
+    const size = 17 + 4 * v;
+    const m = Array.from({ length: size }, () => new Array(size).fill(-1));
+    const put = (r, c, val) => { if (r >= 0 && r < size && c >= 0 && c < size) m[r][c] = val; };
+
+    for (const [br, bc] of [[0, 0], [0, size - 7], [size - 7, 0]]) {
+      for (let r = -1; r <= 7; r++) for (let c = -1; c <= 7; c++) {
+        const inside = r >= 0 && r < 7 && c >= 0 && c < 7;
+        const dark = inside && (r === 0 || r === 6 || c === 0 || c === 6 || (r >= 2 && r <= 4 && c >= 2 && c <= 4));
+        put(br + r, bc + c, dark ? 1 : 0);
+      }
+    }
+
+    for (let i = 8; i < size - 8; i++) { m[6][i] = i % 2 === 0 ? 1 : 0; m[i][6] = i % 2 === 0 ? 1 : 0; }
+
+    const pos = ALIGN[v - 1];
+    for (const r of pos) for (const c of pos) {
+      if ((r <= 8 && c <= 8) || (r <= 8 && c >= size - 9) || (r >= size - 9 && c <= 8)) continue;
+      for (let dr = -2; dr <= 2; dr++) for (let dc = -2; dc <= 2; dc++)
+        m[r + dr][c + dc] = (Math.abs(dr) === 2 || Math.abs(dc) === 2 || (dr === 0 && dc === 0)) ? 1 : 0;
+    }
+
+    m[size - 8][8] = 1; // тёмный модуль
+
+    for (let i = 0; i <= 8; i++) { if (m[8][i] === -1) m[8][i] = 2; if (m[i][8] === -1) m[i][8] = 2; }
+    for (let i = size - 8; i < size; i++) { if (m[8][i] === -1) m[8][i] = 2; if (m[i][8] === -1) m[i][8] = 2; }
+
+    if (v >= 7) for (let i = 0; i < 18; i++) {
+      m[size - 11 + (i % 3)][(i / 3) | 0] = 2;
+      m[(i / 3) | 0][size - 11 + (i % 3)] = 2;
+    }
+    return m;
+  }
+
+  const capacityBits = (m) => m.reduce((s, row) => s + row.filter(x => x === -1).length, 0);
+
+  const MASKS = [
+    (i, j) => (i + j) % 2 === 0,
+    (i, j) => i % 2 === 0,
+    (i, j) => j % 3 === 0,
+    (i, j) => (i + j) % 3 === 0,
+    (i, j) => (((i / 2) | 0) + ((j / 3) | 0)) % 2 === 0,
+    (i, j) => (i * j) % 2 + (i * j) % 3 === 0,
+    (i, j) => ((i * j) % 2 + (i * j) % 3) % 2 === 0,
+    (i, j) => ((i + j) % 2 + (i * j) % 3) % 2 === 0,
+  ];
+
+  function bchRemainder(value, gen) {
+    const genBitLen = 32 - Math.clz32(gen);
+    let v = value;
+    while (32 - Math.clz32(v) >= genBitLen) v ^= gen << (32 - Math.clz32(v) - genBitLen);
+    return v;
+  }
+
+  function formatBits(mask) {
+    const data = (0b00 << 3) | mask; // уровень M = 00
+    const bits = (data << 10) | bchRemainder(data << 10, 0b10100110111);
+    return bits ^ 0b101010000010010;
+  }
+
+  function versionBits(v) {
+    return (v << 12) | bchRemainder(v << 12, 0b1111100100101);
+  }
+
+  function penalty(m) {
+    const size = m.length;
+    let score = 0;
+
+    const runScore = (line) => {
+      let s = 0, run = 1;
+      for (let i = 1; i < line.length; i++) {
+        if (line[i] === line[i - 1]) { run++; }
+        else { if (run >= 5) s += 3 + (run - 5); run = 1; }
+      }
+      if (run >= 5) s += 3 + (run - 5);
+      return s;
+    };
+
+    const FIND = [1,0,1,1,1,0,1,0,0,0,0];
+    const hasPattern = (line, i) => {
+      const fwd = FIND.every((b, k) => line[i + k] === b);
+      const bwd = FIND.every((b, k) => line[i + FIND.length - 1 - k] === b);
+      return fwd || bwd;
+    };
+
+    for (let i = 0; i < size; i++) {
+      const row = m[i], col = m.map(r => r[i]);
+      score += runScore(row) + runScore(col);
+      for (let j = 0; j + 11 <= size; j++) {
+        if (hasPattern(row, j)) score += 40;
+        if (hasPattern(col, j)) score += 40;
+      }
+    }
+
+    for (let i = 0; i + 1 < size; i++) for (let j = 0; j + 1 < size; j++) {
+      const a = m[i][j];
+      if (a === m[i][j + 1] && a === m[i + 1][j] && a === m[i + 1][j + 1]) score += 3;
+    }
+
+    let dark = 0;
+    for (const row of m) for (const cell of row) dark += cell;
+    const pct = (dark * 100) / (size * size);
+    score += Math.floor(Math.abs(pct - 50) / 5) * 10;
+
+    return score;
+  }
+
+  function encode(text) {
+    const bytes = Array.from(new TextEncoder().encode(text));
+
+    let version = 0, skel = null, totalCw = 0;
+    for (let v = 1; v <= 10; v++) {
+      const s = skeleton(v);
+      const cw = Math.floor(capacityBits(s) / 8);
+      const dataCw = cw - EC_PER_BLOCK[v - 1] * BLOCKS[v - 1];
+      const header = 4 + (v < 10 ? 8 : 16);
+      if (dataCw * 8 - header >= bytes.length * 8) { version = v; skel = s; totalCw = cw; break; }
+    }
+    if (!version) throw new Error('Слишком длинный текст для QR (макс. версия 10)');
+
+    const ecLen  = EC_PER_BLOCK[version - 1];
+    const nBlock = BLOCKS[version - 1];
+    const dataCw = totalCw - ecLen * nBlock;
+
+    // --- битовый поток ---
+    const bits = [];
+    const push = (val, len) => { for (let i = len - 1; i >= 0; i--) bits.push((val >> i) & 1); };
+    push(0b0100, 4);
+    push(bytes.length, version < 10 ? 8 : 16);
+    for (const b of bytes) push(b, 8);
+    for (let i = 0; i < 4 && bits.length < dataCw * 8; i++) bits.push(0);
+    while (bits.length % 8) bits.push(0);
+
+    const words = [];
+    for (let i = 0; i < bits.length; i += 8) words.push(parseInt(bits.slice(i, i + 8).join(''), 2));
+    for (let i = 0; words.length < dataCw; i++) words.push(i % 2 === 0 ? 0xEC : 0x11);
+
+    // --- блоки + коррекция ошибок ---
+    const shortLen = Math.floor(dataCw / nBlock);
+    const nLong = dataCw % nBlock;
+    const dataBlocks = [], ecBlocks = [];
+    let off = 0;
+    for (let b = 0; b < nBlock; b++) {
+      const len = shortLen + (b >= nBlock - nLong ? 1 : 0);
+      const chunk = words.slice(off, off + len); off += len;
+      dataBlocks.push(chunk);
+      ecBlocks.push(ecBytes(chunk, ecLen));
+    }
+
+    const stream = [];
+    for (let i = 0; i <= shortLen; i++) for (const b of dataBlocks) if (i < b.length) stream.push(b[i]);
+    for (let i = 0; i < ecLen; i++) for (const b of ecBlocks) stream.push(b[i]);
+
+    const streamBits = [];
+    for (const w of stream) for (let i = 7; i >= 0; i--) streamBits.push((w >> i) & 1);
+
+    // --- размещение + выбор маски ---
+    const size = skel.length;
+    let best = null, bestScore = Infinity;
+
+    for (let mask = 0; mask < 8; mask++) {
+      const m = skel.map(row => row.slice());
+      const maskFn = MASKS[mask];
+      let idx = 0, dir = -1, row = size - 1;
+
+      for (let col = size - 1; col > 0; col -= 2) {
+        if (col === 6) col--;
+        for (;;) {
+          for (const c of [col, col - 1]) {
+            if (m[row][c] === -1) {
+              const bit = idx < streamBits.length ? streamBits[idx] : 0;
+              idx++;
+              m[row][c] = maskFn(row, c) ? bit ^ 1 : bit;
+            }
+          }
+          row += dir;
+          if (row < 0 || row >= size) { row -= dir; dir = -dir; break; }
+        }
+      }
+
+      const fmt = formatBits(mask);
+      const fbit = (i) => (fmt >> (14 - i)) & 1; // бит 14 идёт первым
+      for (let i = 0; i <= 5; i++) m[8][i] = fbit(i);
+      m[8][7] = fbit(6); m[8][8] = fbit(7); m[7][8] = fbit(8);
+      for (let i = 9; i <= 14; i++) m[14 - i][8] = fbit(i);
+      for (let i = 0; i <= 6; i++) m[size - 1 - i][8] = fbit(i);
+      for (let i = 7; i <= 14; i++) m[8][size - 15 + i] = fbit(i);
+
+      if (version >= 7) {
+        const ver = versionBits(version);
+        for (let i = 0; i < 18; i++) {
+          const bit = (ver >> i) & 1;
+          m[size - 11 + (i % 3)][(i / 3) | 0] = bit;
+          m[(i / 3) | 0][size - 11 + (i % 3)] = bit;
+        }
+      }
+
+      const s = penalty(m);
+      if (s < bestScore) { bestScore = s; best = m; }
+    }
+
+    return { size, modules: best, version };
+  }
+
+  return { encode };
+})();
+
+/* ============================================================
+   ЕДИНСТВЕННОЕ МЕСТО ДЛЯ РЕДАКТИРОВАНИЯ — ваши данные
+   ============================================================ */
+const CARD = {
+  firstName : 'Нұржігіт',
+  lastName  : 'Сайлаубек',
+  title     : 'Founder, CASEL',
+  company   : 'CASEL',
+  city      : 'Костанай',
+  country   : 'Казахстан',
+
+  // Телефон: phone — как показать, phoneRaw — для tel:/vCard (только + и цифры)
+  phone     : '+7 705 222 8378',
+  phoneRaw  : '+77052228378',
+
+  email     : 'nurzhigitsailaubek@gmail.com',
+  website   : 'https://example.com',
+
+  telegram  : 'sailaubek_nurzhigit',   // без @ → t.me/username
+  whatsapp  : '77052228378',           // только цифры, без + → wa.me/77052228378
+  linkedin  : 'https://www.linkedin.com/in/nurzhigit-sailaubek-a45710412',
+  instagram : 'nurzhigit_sailaubek',    // без @ → instagram.com/username
+
+  // Текст, который уходит при «Поделиться»
+  shareTitle: 'Визитка — Нұржігіт Сайлаубек',
+  shareText : 'Мои контакты в одной ссылке 👇',
+};
+
+/* ============================================================
+   Подстановка данных в разметку
+   ============================================================ */
+const $ = (id) => document.getElementById(id);
+
+const set = (id, attrs) => {
+  const el = $(id);
+  if (!el) return;
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'text') el.textContent = v;
+    else el.setAttribute(k, v);
+  }
+};
+
+set('text-city',      { text: CARD.city + ', ' + CARD.country });
+set('link-phone',     { href: 'tel:' + CARD.phoneRaw });
+set('text-phone',     { text: CARD.phone });
+set('link-email',     { href: 'mailto:' + CARD.email });
+set('text-email',     { text: CARD.email });
+
+set('link-telegram',  { href: 'https://t.me/' + CARD.telegram });
+set('text-telegram',  { text: '@' + CARD.telegram });
+set('link-whatsapp',  { href: 'https://wa.me/' + CARD.whatsapp });
+set('link-linkedin',  { href: CARD.linkedin });
+set('link-instagram', { href: 'https://instagram.com/' + CARD.instagram });
+set('text-instagram', { text: '@' + CARD.instagram });
+
+$('year').textContent = new Date().getFullYear();
+
+/* ============================================================
+   Toast
+   ============================================================ */
+let toastTimer;
+function toast(message) {
+  const box = $('toast');
+  $('toast-text').textContent = message;
+  box.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => box.classList.remove('show'), 2600);
+}
+
+/* ============================================================
+   Генерация .vcf (vCard 3.0) прямо в браузере — без бэкенда
+   ============================================================ */
+function buildVCard() {
+  // В vCard строки разделяются CRLF, спецсимволы экранируются
+  const esc = (s = '') => String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+
+  const lines = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    `N;CHARSET=UTF-8:${esc(CARD.lastName)};${esc(CARD.firstName)};;;`,
+    `FN;CHARSET=UTF-8:${esc(CARD.firstName + ' ' + CARD.lastName)}`,
+    `ORG;CHARSET=UTF-8:${esc(CARD.company)}`,
+    `TITLE;CHARSET=UTF-8:${esc(CARD.title)}`,
+    `TEL;TYPE=CELL,VOICE:${CARD.phoneRaw}`,
+    `EMAIL;TYPE=INTERNET,PREF:${CARD.email}`,
+    `X-SOCIALPROFILE;TYPE=telegram:https://t.me/${CARD.telegram}`,
+    `X-SOCIALPROFILE;TYPE=linkedin:${CARD.linkedin}`,
+    `X-SOCIALPROFILE;TYPE=instagram:https://instagram.com/${CARD.instagram}`,
+    `NOTE;CHARSET=UTF-8:${esc('WhatsApp: https://wa.me/' + CARD.whatsapp)}`,
+    `REV:${new Date().toISOString()}`,
+    'END:VCARD',
+  ];
+
+  return lines.join('\r\n');
+}
+
+function downloadVCard() {
+  // Без BOM: строгие парсеры (iOS Contacts) не любят символ перед BEGIN:VCARD
+  const blob = new Blob([buildVCard()], { type: 'text/vcard;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+
+  a.href = url;
+  a.download = `${CARD.firstName}_${CARD.lastName}.vcf`;
+  a.rel = 'noopener';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  // Освобождаем память чуть позже — Safari на iOS иначе не успевает скачать
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+  toast('Контакт загружен — откройте файл');
+}
+
+$('save-contact').addEventListener('click', downloadVCard);
+
+/* ============================================================
+   Web Share API + запасной вариант (копирование ссылки)
+   ============================================================ */
+async function shareCard() {
+  const url = location.href;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: CARD.shareTitle, text: CARD.shareText, url });
+      return;
+    } catch (err) {
+      if (err && err.name === 'AbortError') return; // пользователь закрыл шторку
+    }
+  }
+
+  try {
+    await navigator.clipboard.writeText(url);
+    toast('Ссылка скопирована');
+  } catch {
+    // Совсем старые браузеры / незащищённый контекст
+    const input = document.createElement('input');
+    input.value = url;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    input.remove();
+    toast('Ссылка скопирована');
+  }
+}
+
+$('share-card').addEventListener('click', shareCard);
+
+/* ============================================================
+   QR-модалка: рендерим ссылку на визитку прямо на <canvas>
+   ============================================================ */
+function renderQR(canvas, text) {
+  const { size, modules } = QR.encode(text);
+  const margin = 4;
+  const dim = size + margin * 2;
+  const px = canvas.width / dim; // размер одного модуля в пикселях
+
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#0F0F11';
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (modules[r][c]) ctx.fillRect((c + margin) * px, (r + margin) * px, px, px);
+    }
+  }
+}
+
+function openQR() {
+  try {
+    renderQR($('qr-canvas'), location.href);
+    $('qr-modal').classList.add('show');
+  } catch (err) {
+    toast('Не удалось сгенерировать QR');
+  }
+}
+
+function closeQR() {
+  $('qr-modal').classList.remove('show');
+}
+
+$('show-qr').addEventListener('click', openQR);
+$('qr-close').addEventListener('click', closeQR);
+$('qr-modal').addEventListener('click', (e) => { if (e.target.id === 'qr-modal') closeQR(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeQR(); });
+</script>
+</body>
+</html>
